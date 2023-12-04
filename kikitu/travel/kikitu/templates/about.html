@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <title>{% block title %}About Us{% endblock %}</title>
+</head>
+{% block content %}
+<body>
+    <section class="hero" id="about">
+        <div class="heading">
+            <h1>About Us</h1>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h2>Welcome to Kikitu Tours & Travel. </h2>
+                <p>We are all about creating incredible experiences and unforgettable adventures.
+                </p>
+                <button class="cta-button">Learn More</button>
+                <div class="socials">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+        </div>
+        <div class="hero-image" onmouseover="hoverVideo(this);" onmouseout="unhoverVideo(this);">
+            <video src="{% static 'images/lion.mp4' %}" alt="" autoplay loop muted playsinline></video>
+        </div>
+        
+        
+    </section>
+
+    <section class="hero" id="mission">
+        <div class="heading">
+            <h1></h1>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h2>Mission</h2>
+                <p>Our aim is to unleash the explorer within you by designing personalised trips that capture the essence of each destination as we also give back to those in need.</p>
+                <h2>Vision</h2>
+                <p>To be your ultimate trusted adventure companion, fueling your wanderlust and creating memories that ignite your soul and also leave a positive impact on the local community. We want to be the tour company that connects cultures, fostering global understanding and appreciation through immersive travel experiences while also making a difference in the lives of others.</p>
+            </div>
+    
+            <div class="hero-image">
+                <img src="{% static 'images/cruiser.jpg' %}" alt="" />
+            </div>
+        </div>
+    </section>
+
+    <section class="hero" id="givingback">
+        <div class="heading">
+            <h1></h1>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h2>Giving Back</h2>
+                
+               <p>At Kikitu Adventures, we believe in making a positive impact on the communities we touch. Our giving back initiatives include:</p> 
+               <p>We have sponsored Steve Lelesh, a student from Intingesho, a small village at Maasai Mara. He is currently enrolled in a driving school and he is also learning the Russian language. We later plan on taking him to do tour management as it is his passion. 
+
+                <p>We have also built up a garage in Nairobi where we are creating employment to the less fortunate people and also trying to teach some people to work at the garage so as to be able to support themselves. </p>
+                
+                <p>Kikitu Adventures is also in the process of creating a foundation which will help a lot of people. The foundation will fund educational programs for underprivileged children and creating employment to our youth. </p>
+                
+               <p>By choosing Kikitu Adventures you are not only embarking on an incredible journey, but also contributing to the betterment of the communities we explore together.</p>
+
+            </div>
+    
+            <div class="hero-image">
+                <img src="{% static 'images/giving.jpg' %}" alt="" />
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="faqs" id="faqs">
+            <h1>FAQs</h1>
+        </section>
+        <section class="questions-answers">
+            {% for faq in faqs %}
+            <div class="question">
+                {{ faq.question }}
+                <span>+</span>
+                <span>-</span>
+            </div>
+            <div class="answer">
+                <p>{{ faq.answer }}</p>
+            </div>
+            {% endfor %}
+        </section>
+        
+    </main>
+    
+    <section>
+        
+    </section>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+<script>
+const questions = document.querySelectorAll(".question");
+questions.forEach((question, index) => {
+    question.addEventListener("click", () => {
+        const answer = question.nextElementSibling; // Assuming the answer follows the question
+        answer.classList.toggle("active");
+        question.querySelector("span:first-child").classList.toggle("disable");
+        question.querySelector("span:last-child").classList.toggle("active");
+    });
+});
+
+
+function hoverVideo(element) {
+    element.querySelector('video').play();
+}
+
+function unhoverVideo(element) {
+    element.querySelector('video').pause();
+}
+</script>
+
+{% endblock content %}
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- other_template.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+<title>{% block title %}Travel Information{% endblock %}</title>
+
+{% block content %}
+    <section class="post-header">
+        <div class="header-content post container">
+            <a href="index.html" class="back-home">Home</a>
+
+            <h1 class="header-title">{{ destination.location }} Package Overview</h1>
+
+            <img src="{{ destination.image.url }}" alt="{{ destination.location }}" class="header-img">
+        </div>
+
+    </section>
+
+    <section class="post-content post-container">
+        <h2 class="sub-heading">Itenerary</h2>
+        <p class="post-text">
+            {{ destination.itinerary | linebreaksbr }}
+            
+        </p>
+        <a href="{% url 'booking_terms' %}" class="btn">Book Now</a>
+    </section>
+
+    <div class="share post-container">
+        <span class="share-title">Share The Above 😉</span>
+        <div class="social">
+            <a href="" target="_blank"><i class="fab fa-facebook"></i>  Facebook</a>
+            <a href="" target="_blank"><i class="fab fa-instagram"></i>  Instagram</a>
+            <a href="" target="_blank"><i class="fab fa-youtube"></i>  YouTube</a>
+            <a href="" target="_blank"><i class="fab fa-twitter"></i>  Twitter</a>
+            <a href="" target="_blank"><i class="fab fa-linkedin"></i>  LinkedIn</a>
+        </div>
+    </div>
+    <link rel="stylesheet" href="{% static 'css/travelinfo.css' %}">
+{% endblock %}

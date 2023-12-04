@@ -1,0 +1,98 @@
+<!-- base.html -->
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Default Title{% endblock %}</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- header section starts  -->
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+        <a href="{% url 'index' %}" class="logo"><span>K</span>ikitu Tours & Travel</a>
+        <nav class="navbar">
+
+            <a href="{% url 'booking_terms' %}">book</a>
+            <a href="{% url 'index' %}#packages">packages</a>
+            <a href="{% url 'index' %}#services">services</a>
+            <a href="{% url 'index' %}#gallery">gallery</a>
+            <a href="{% url 'index' %}#review">review</a>
+            <a href="{% url 'index' %}#contact">contact</a>
+            <div class="dropdown">
+                <a href="{% url 'about' %}" class="dropbtn">About Us <i class="fa fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="{% url 'about' %}#mission">Mission</a>
+                    <a href="{% url 'about' %}#mission">Vision</a>
+                    <a href="{% url 'about' %}#givingback">Giving back</a>>
+                    <a href="{% url 'about' %}#faqs">FAQ's</a>
+                    <a href="{% url 'about' %}#team">Our Team</a>
+                </div>
+            </div>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-search" id="search-btn"></i>
+        </div>
+        <form action="" class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="search here...">
+            <label for="search-bar" class="fas fa-search"></label>
+        </form>
+    </header>
+
+    <!-- Content block to be overridden by child templates -->
+    {% block content %}{% endblock %}
+
+    <!-- footer section starts here -->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>about us</h3>
+                <p>We Are All About Creating Incredible Experiences And Unforgettable Adventures.</p>
+            </div>
+            <div class="box">
+                <h3>our location</h3>
+                <a href="">Nairobi, Kenya</a>
+                <a href="">Tel:+254 759 894862</a>
+                <a href="">Email:info@kikituadventures.com</a>
+            </div>
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="#">home</a>
+                <a href="#">book</a>
+                <a href="#">services</a>
+                <a href="#">gallery</a>
+                <a href="#">review</a>
+                <a href="#">contact</a>
+            </div>
+            <div class="box">
+                <h3>Follow us</h3>
+                <a href="https://www.facebook.com/profile.php?id=100064024960149" target="_blank"><i class="fab fa-facebook"></i>  Facebook</a>
+                <a href="https://www.instagram.com/kikitu_adventures/" target="_blank"><i class="fab fa-instagram"></i>  Instagram</a>
+                <a href="https://www.youtube.com/@kikituadventures" target="_blank"><i class="fab fa-youtube"></i>  YouTube</a>
+                <a href="#contact" target="_blank"><i class="fab fa-twitter"></i>  Twitter</a>
+                <a href="#contact" target="_blank"><i class="fab fa-linkedin"></i>  LinkedIn</a>
+            </div>
+            
+    
+        </div>
+    
+        <h1 class="credit">created by <span>surecode</span> |  all rights reserved!</h1>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!--custom js file link-->
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

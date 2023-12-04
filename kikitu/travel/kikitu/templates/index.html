@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kikitu tours & travel</title>
+    <link rel="stylesheet" href="path/to/owl.carousel.min.css">
+    <link rel="stylesheet" href="path/to/owl.theme.default.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+
+
+    <!-- header section starts  -->
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+        <a href="{% url 'index' %}" class="logo"><span></span>Kikitu Tours & Travel</a>
+        <nav class="navbar">
+            <a href="{% url 'booking_terms' %}">book</a>
+            <a href="#packages">packages</a>
+            <a href="#services">services</a>
+            <a href="#gallery">gallery</a>
+            <a href="#review">review</a>
+            <a href="#contact">contact</a>
+            <div class="dropdown">
+                <a href="{% url 'about' %}" class="dropbtn">About Us <i class="fa fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="{% url 'about' %}#about">Mission</a>
+                    <a href="{% url 'about' %}#mission">Vision</a>
+                    <a href="{% url 'about' %}#givingback">Giving back</a>>
+                    <a href="{% url 'about' %}#faqs">FAQ's</a>
+                    <a href="{% url 'about' %}#ourteam">Our Team</a>
+                </div>
+            </div>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-search" id="search-btn"></i>
+        </div>
+        <form action="" class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="search here...">
+            <label for="search-bar" class="fas fa-search"></label>
+        </form>
+    </header>
+    <!-- header section ends-->
+
+
+
+    <!-- home section start from here-->
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Kikitu Adventures</h3>
+            <p>discover new places with us, adventure awaits</p>
+            <a href="#" class="btn">discover more</a>
+        </div>
+        <div class="controls">
+            <span class="vid-btn-active" data-src="{% static 'images/home4.mp4' %}"></span>
+            <span class="vid-btn" data-src="{% static 'images/home1.mp4' %}"></span>
+            <span class="vid-btn" data-src="{% static 'images/home2.mp4' %}"></span>
+            <span class="vid-btn" data-src="{% static 'images/home3.mp4' %}"></span>
+        </div>
+
+        <div class="video-container">
+            <video src="{% static 'images/home4.mp4' %}" id="video-slider" loop autoplay muted=""></video>
+        </div>
+    </section>
+    <!-- home ends here-->
+
+
+
+
+   <!-- packages secttin starts here-->
+  <section class="packages" id="packages">
+    <h1 class="heading">
+        <span>p</span>
+        <span>a</span>
+        <span>c</span>
+        <span>k</span>
+        <span>a</span>
+        <span>g</span>
+        <span>e</span>
+        <span>s</span>
+    </h1>
+    <div class="box-container">
+        {% for destination in destinations %}
+        <div class="box">
+            <img src="{{ destination.imageURL }}" alt="">
+            <div class="content">
+                <h3><i class="fas fa-map-marker-alt"> {{destination.location}}</i></h3>
+                <p>{{destination.description}}</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="price">${{destination.price}} <span>${{destination.price_before}}</span></div>
+                <a href="{% url 'travelinfo' package_id=destination.id %}" class="btn">View Package</a>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>  
+    </section>  
+
+
+    <section class="packages" id="packages">
+    <h1 class="heading">
+        <span>p</span>
+        <span>o</span>
+        <span>p</span>
+        <span>u</span>
+        <span>l</span>
+        <span>a</span>
+        <span>r</span>
+    </h1>
+    <div class="box-container">
+        {% for popular in populars %}
+        <div class="box">
+            <img src="{{ popular.imageURL4 }}" alt="">
+            <div class="content">
+                <h3><i class="fas fa-map-marker-alt"> {{popular.location}}</i></h3>
+                <p>{{popular.description}}</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="price">${{popular.price}} <span>${{popular.price_before}}</span></div>
+                <a href="{% url 'popularinfo' package_id=popular.id %}" class="btn">View</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>  
+    </section> 
+
+    
+<!-- services section starts here -->
+<section class="services" id="services">
+    <h1 class="heading">
+        <span>s</span>
+        <span>e</span>
+        <span>r</span>
+        <span>v</span>
+        <span>i</span>
+        <span>c</span>
+        <span>e</span>
+        <span>s</span>
+    </h1>
+    <div class="box-container">
+        <div class="box">
+            <i class="fas fa-hotel"></i>
+            <h3>Accommodation</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, quia!</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-utensils"></i>
+            <h3>Food and Drinks</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, quia!</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Safety Guide</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, quia!</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-hiking"></i>
+            <h3>Adventures</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, quia!</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-plane"></i>
+            <h3>Plane Ticketing</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, quia!</p>
+        </div>
+    </div>
+</section>
+<!-- services section ends here -->
+
+<!-- gallery section starts here -->
+<section id="gallery" class="gallery">
+    <h1 class="heading">
+        <span>g</span>
+        <span>a</span>
+        <span>l</span>
+        <span>l</span>
+        <span>e</span>
+        <span>r</span>
+        <span>y</span>
+    </h1>
+    <div class="box-container">
+        {% for experience in experiences %}
+        <div class="box">
+            <img src=" {{experience.imageURL2}} " alt="">
+            <div class="content">
+                <h3>{{experience.destination}}</h3>
+                <p>{{experience.experience}}</p>
+                <a href="#" class="btn">See More</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+<!-- gallery section ends here -->
+
+<!-- review section starts here -->
+
+
+<secction class="review" id="review">
+    <h1 class="heading">
+        <span>R</span>
+        <span>e</span>
+        <span>v</span>
+        <span>i</span>
+        <span>e</span>
+        <span>w</span>
+        <span>s</span>
+    </h1>
+    <div class="swiper-container review-slider">
+        {% for review in reviews %}
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="{{review.imageURL3}}" alt="">
+                    <h3>{{review.name}}</h3>
+                    <p>{{review.date}}</p>
+                    <p>{{review.comment}}</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <a href="https://www.tripadvisor.com/Search?searchSessionId=001a39532e0e02da.ssid&searchNearby=false&q=kikitu&sid=C8B78258C46B4725BC5A48294DAB3B4F1697794563156&blockRedirect=true&geo=1&rf=1" class="btn" target="_blank">Read more</a>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    
+</secction>
+<!-- preview section ends here -->
+
+<!-- contact section starts here -->
+
+<section class="contact" id="contact">
+
+    <h1 class="heading">
+        <span>C</span>
+        <span>o</span>
+        <span>n</span>
+        <span>t</span>
+        <span>a</span>
+        <span>c</span>
+        <span>t</span>
+    </h1>
+    <div class="row">
+        <div class="image">
+            <img src="{% static 'images/contact.svg' %}" alt="">
+            <h3>Call is on</h3>
+        </div>
+        <form action="">
+            <div class="inputBox">
+                <input type="text" placeholder="name">
+                <input type="email" placeholder="email">
+            </div>
+            <div class="inputBox">
+                <input type="number" placeholder="number">
+                <input type="text" placeholder="subject">
+            </div>
+            <textarea placeholder="message" name="" id="" cols="30" rows="10"></textarea>
+            <input type="submit" class="btn"  value="send message">
+        </form>
+    </div>
+</section>
+<!-- contact section ends here -->
+
+<!-- brand section starts here -->
+
+
+<section class="brand-container">
+    <h1 class="heading">
+        <span>P</span>
+        <span>a</span>
+        <span>r</span>
+        <span>t</span>
+        <span>n</span>
+        <span>e</span>
+        <span>r</span>
+        <span>s</span>
+    </h1>
+
+    <div class="swiper-container brand-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="{% static 'images/Amref.png' %}" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'images/kato.png' %}" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'images/kws.png' %}" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'images/magical kenya.png' %}" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'images/forest.png' %}" alt=""></div>
+        </div>
+    </div>
+
+</section>
+<!-- brand section ends here -->
+
+<!-- footer section starts here -->
+<section class="footer">
+    <div class="box-container">
+        <div class="box">
+            <h3>about us</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, odio?</p>
+        </div>
+        <div class="box">
+            <h3>our location</h3>
+            <a href="">Nairobi, Kenya</a>
+            <a href="">Tel:+254 759 894862</a>
+            <a href="">Email:info@kikituadventures.com</a>
+        </div>
+        <div class="box">
+            <h3>Quick Links</h3>
+            <a href="#">home</a>
+            <a href="#">book</a>
+            <a href="#">services</a>
+            <a href="#">gallery</a>
+            <a href="#">review</a>
+            <a href="#">contact</a>
+        </div>
+        <div class="box">
+            <h3>Follow us</h3>
+            <a href="https://www.facebook.com/profile.php?id=100064024960149" target="_blank"><i class="fab fa-facebook"></i>  Facebook</a>
+            <a href="https://www.instagram.com/kikitu_adventures/" target="_blank"><i class="fab fa-instagram"></i>  Instagram</a>
+            <a href="https://www.youtube.com/@kikituadventures" target="_blank"><i class="fab fa-youtube"></i>  YouTube</a>
+            <a href="#contact" target="_blank"><i class="fab fa-twitter"></i>  Twitter</a>
+            <a href="#contact" target="_blank"><i class="fab fa-linkedin"></i>  LinkedIn</a>
+        </div>
+        
+
+    </div>
+
+    <h1 class="credit">created by <span>surecode</span> |  all rights reserved!</h1>
+</section>
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<!--custom js file link-->
+<script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
